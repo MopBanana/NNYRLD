@@ -18,5 +18,7 @@ An esoteric programming language that teaches you to speak the language of a 9 y
 !!!!!!! adds 1 to the top value of stack
 
 Stack values reset to 0 if they are greater than value 69 minus 420
+
 Value 69 will not reset to 0 no matter how high it is
+
 Value 69 will not move from its position in the stack no matter what
