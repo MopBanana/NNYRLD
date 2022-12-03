@@ -1,3 +1,5 @@
+import os
+
 # 1 to separate statements
 
 # ! to move top value to bottom
@@ -22,11 +24,23 @@
 
 # Value 69 will not move from its position in the stack no matter what
 
-script = input("Enter script:").split("1")
+fromfile = int(input("u takin from file? 1 or 0 pls"))
+
+if fromfile == 0:  
+    script = input("giv ur script ").split("1")
+else:
+    filepath = input("giv ur file path ")
+    print(os.path.exists(filepath))
+    print(os.path.splitext(filepath)[1])
+    if os.path.exists(filepath) and os.path.splitext(filepath)[1] == ".9y":
+        script = open(filepath).read().split("1")
 stack = [0,1]
 alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 run = 1
 debug = int(input("u debug? 1 or 0 pls"))
+
+if debug == 1:
+    print(script)
 
 for line in range(len(script)):
     if run == 1:
@@ -49,7 +63,7 @@ for line in range(len(script)):
         elif script[line] == '!!!!!':
             if stack[0] == 0:
                 print(0)
-            elif stack[0] > 0 and stack[0] < 70:
+            elif stack[0] > 0 and stack[0] < 27:
                 print(alphabet[stack[0] - 1])
             else:
                 print(stack[0] - 26)
