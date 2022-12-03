@@ -9,7 +9,7 @@ An esoteric programming language that teaches you to speak the language of a 9 y
 
 !!! runs next command if top value of stack is 1
 
-!!!! runs next command if top value of stack is not 1
+!!!! goes back 10 steps if top value of stack is 0 (thanks BlobTheCat)
 
 !!!!! prints top value of stack as respective letter if 1-26, else if top value == 0, prints 0, else prints top value as int minus 26
 
