@@ -7,7 +7,7 @@
 
 # !!! runs next command if top value of stack is 1
 
-# !!!! runs next command if top value of stack is not 1
+# !!!! goes back 10 steps if top value of stack is 0 (thanks BlobTheCat)
 
 # !!!!! prints top value of stack as respective letter if 1-26,
 # else if top value == 0, prints 0,
@@ -28,40 +28,40 @@ alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q',
 run = 1
 debug = int(input("u debug? 1 or 0 pls"))
 
-for line in script:
+for line in range(len(script)):
     if run == 1:
-        if line == '!':
+        if script[line] == '!':
             stack.append(stack[0])
             stack.pop(0)
             if len(stack) >= 69:
                 temp = stack[67]
                 stack[67] = stack[68]
                 stack[68] = temp
-        elif line == '!!':
+        elif script[line] == '!!':
             if len(stack) == 69:
                 stack = stack + [420]
             else:
                 stack = [0] + stack
-        elif line == '!!!' and stack[0] == 1:
+        elif script[line] == '!!!' and stack[0] != 1:
             run = 0
-        elif line == '!!!!' and stack[0] != 1:
-            run = 0
-        elif line == '!!!!!':
+        elif script[line] == '!!!!' and stack[0] == 0:
+            line -= 10
+        elif script[line] == '!!!!!':
             if stack[0] == 0:
                 print(0)
             elif stack[0] > 0 and stack[0] < 70:
                 print(alphabet[stack[0] - 1])
             else:
                 print(stack[0] - 26)
-        elif line == '!!!!!!':
-            stack = [input("giv ur int")] + stack
+        elif script[line] == '!!!!!!':
+            stack = [int(input("giv ur int"))] + stack
             if len(stack) == 69:
                 temp = stack[68]
                 stack[68] = stack[69]
                 stack[69] = temp
                 if stack[len(stack) - 1] > stack[68]:
                     stack[len(stack) - 1] = 0
-        elif line == '!!!!!!!':
+        elif script[line] == '!!!!!!!':
             stack[0] += 1
 
     if len(stack) >= 69 and stack[0] > stack[68] - 420:
